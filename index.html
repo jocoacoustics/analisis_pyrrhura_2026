@@ -1,0 +1,189 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="Atlas científico interactivo Pyrrhura. Coordenadas originales verificadas; evidencia JD, Railway y clasificadores; versión 0.1.5.8." name="description"/>
+<meta content="light" name="color-scheme"/>
+<title>Análisis Pyrrhura 2026 · Observatorio v0.1.6</title>
+<link href="assets/brand/jocotoco_logo.png" rel="icon" type="image/png"/>
+<link href="assets/css/styles.css" rel="stylesheet"/><link href="assets/css/ux_contract_v0157.css" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+<script>window.MathJax={tex:{processEscapes:true,inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},options:{enableMenu:false}};</script>
+<script defer="" src="vendor/plotly.min.js"></script>
+<script defer="" src="vendor/tex-svg-full.js"></script>
+<script crossorigin="anonymous" defer="" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script defer="" src="datos/observatorio.js"></script>
+<script defer="" src="assets/js/geografia.js"></script>
+<script defer="" src="datos/ambiente.js"></script>
+<script defer="" src="assets/js/app.js"></script>
+<link rel="stylesheet" href="assets/css/v0158.css"/></head>
+<body>
+<svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-menu" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></symbol>
+<symbol id="i-close" viewbox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></symbol>
+<symbol id="i-chevron-left" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></symbol>
+<symbol id="i-chevron-right" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></symbol>
+<symbol id="i-chevron-down" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></symbol>
+<symbol id="i-search" viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></symbol>
+<symbol id="i-layout" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M9 3v18"></path></symbol>
+<symbol id="i-house" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"></path><path d="M9 21v-8h6v8"></path></symbol>
+<symbol id="i-map" viewbox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6ZM9 3v15M15 6v15"></path></symbol>
+<symbol id="i-chart" viewbox="0 0 24 24"><path d="M3 3v18h18M7 15l4-5 4 3 5-8"></path></symbol>
+<symbol id="i-grid" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M3 15h18M9 3v18M15 3v18"></path></symbol>
+<symbol id="i-table" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M3 15h18M9 3v18"></path></symbol>
+<symbol id="i-book" viewbox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5V4a2 2 0 0 1 2-2h14v20H6.5A2.5 2.5 0 0 1 4 19.5Z"></path></symbol>
+<symbol id="i-download" viewbox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"></path></symbol>
+<symbol id="i-expand" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5m13-5v5h-5"></path></symbol>
+<symbol id="i-refresh" viewbox="0 0 24 24"><path d="M3 11a9 9 0 0 1 15.4-6.4L21 7M21 3v4h-4M21 13a9 9 0 0 1-15.4 6.4L3 17m0 4v-4h4"></path></symbol>
+<symbol id="i-info" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 7h.01"></path></symbol>
+<symbol id="i-filter" viewbox="0 0 24 24"><path d="M4 4h16l-6.5 8v6l-3 2v-8L4 4Z"></path></symbol>
+<symbol id="i-check" viewbox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></symbol>
+<symbol id="i-arrow-up" viewbox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"></path></symbol>
+<symbol id="i-copy" viewbox="0 0 24 24"><rect height="13" rx="2" width="13" x="8" y="8"></rect><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path></symbol>
+</svg>
+<div class="app-shell" id="app">
+<div aria-hidden="true" class="sidebar-shade" id="shade"></div>
+<aside aria-label="Navegación de contenido" class="sidebar" id="sidebar">
+<div class="side-brand">
+<button aria-label="Contraer o desplegar Contenido" class="brand-toggle" id="brandToggle" title="Mostrar u ocultar Contenido" type="button"><img alt="Fundación Jocotoco" class="side-logo" src="assets/brand/jocotoco_logo_green.svg"/></button>
+<span class="side-brand-word">CIENCIA<br/><strong>APLICADA</strong></span>
+<button aria-label="Contraer contenido" class="icon-button side-close" id="collapseSide" title="Contraer contenido"><svg><use href="#i-chevron-left"></use></svg></button>
+</div>
+<div class="side-caption">PRESENTACIÓN INTERACTIVA</div>
+<div class="side-title"><span class="side-text">Contenido</span><span class="side-small">Índice</span></div>
+<div class="side-search"><svg><use href="#i-search"></use></svg><input aria-label="Buscar contenido" id="sideSearch" placeholder="Buscar secciones…" type="search"/><kbd>/</kbd></div>
+<nav aria-label="Secciones de la presentación" class="toc" id="toc"><a class="toc-link active" data-title="Inicio y alcance" href="#inicio"><span class="toc-index">01</span><span class="toc-text">Inicio y alcance</span></a><a class="toc-link" data-title="Diseño del estudio" href="#diseno"><span class="toc-index">02</span><span class="toc-text">Diseño del estudio</span></a><a class="toc-link toc-sub" data-title="Mapa SIG" href="#mapFigure"><span class="toc-index">02.1</span><span class="toc-text">Mapa SIG</span></a><a class="toc-link" data-title="Esfuerzo acústico" href="#esfuerzo"><span class="toc-index">03</span><span class="toc-text">Esfuerzo acústico</span></a><a class="toc-link toc-sub" data-title="Serie temporal" href="#timeFigure"><span class="toc-index">03.1</span><span class="toc-text">Serie temporal</span></a><a class="toc-link toc-sub" data-title="Calendario" href="#heatFigure"><span class="toc-index">03.2</span><span class="toc-text">Calendario</span></a><a class="toc-link toc-sub" data-title="Distribución" href="#distFigure"><span class="toc-index">03.3</span><span class="toc-text">Distribución</span></a><a class="toc-link" data-title="Fuentes de evidencia" href="#evidencias"><span class="toc-index">04</span><span class="toc-text">Fuentes de evidencia</span></a><a class="toc-link toc-sub" data-title="Validación experta" href="#evidenceFigure"><span class="toc-index">04.1</span><span class="toc-text">Validación experta</span></a><a class="toc-link toc-sub" data-title="Clasificadores" href="#modelFigure"><span class="toc-index">04.2</span><span class="toc-text">Clasificadores</span></a><a class="toc-link" data-title="Tablas del estudio" href="#tabla"><span class="toc-index">05</span><span class="toc-text">Tablas del estudio</span></a><a class="toc-link toc-sub" data-title="Tabla editorial" href="#shortTable"><span class="toc-index">05.1</span><span class="toc-text">Tabla editorial</span></a><a class="toc-link toc-sub" data-title="Explorador avanzado" href="#tableFigure"><span class="toc-index">05.2</span><span class="toc-text">Explorador avanzado</span></a><a class="toc-link" data-title="Métodos" href="#metodos"><span class="toc-index">06</span><span class="toc-text">Métodos</span></a><a class="toc-link toc-sub" data-title="Fundamento matemático" href="#mathBlock"><span class="toc-index">06.1</span><span class="toc-text">Fundamento matemático</span></a></nav>
+<div class="side-footer"><span class="demo-dot"></span><span class="side-text">Pyrrhura · ciencia reproducible</span><span class="side-small">2026</span></div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<div class="top-left">
+<button aria-label="Abrir contenido" class="icon-button mobile-menu" id="mobileSide"><svg><use href="#i-menu"></use></svg></button>
+<button aria-label="Mostrar contenido" class="icon-button show-sidebar" id="restoreSide" title="Mostrar contenido"><svg><use href="#i-layout"></use></svg></button>
+<div class="header-brand"><img alt="Fundación Jocotoco" src="assets/brand/jocotoco_logo_main.svg"/><span class="header-divider"></span><span class="header-strap">OBSERVATORIO<br/>ACÚSTICO</span></div>
+</div>
+<div class="top-right">
+<span class="top-version">ANÁLISIS · v0.1.6</span>
+<span class="demo-tag">DATOS VERIFICADOS / PENDIENTES</span>
+<button aria-label="Buscar" class="icon-button top-search" id="openSearch" title="Buscar (/)"><svg><use href="#i-search"></use></svg></button>
+</div>
+</header>
+<main class="main" id="main">
+<section class="hero" data-section="" id="inicio">
+<div class="hero-overline"><span class="hero-line"></span> INVESTIGACIÓN ECOACÚSTICA · FUNDACIÓN JOCOTOCO</div>
+<div class="hero-layout">
+<div><h1>Escuchar el territorio.<br/><em>Interpretar la evidencia.</em></h1><p class="hero-sub">Publicación científica interactiva basada en registros de expertos y clasificadores de IA. Los puntos se incorporan exclusivamente desde coordenadas originales verificadas en el servidor.</p>
+<div class="hero-tags"><span>Dos especies</span><span>Mapas SIG</span><span>Reproducibilidad</span></div></div>
+<div aria-hidden="true" class="hero-art"><div class="art-circle c1"></div><div class="art-circle c2"></div><div class="art-circle c3"></div><svg viewbox="0 0 360 140"><path d="M0 74q22-45 46 0t46 0t46 0t46 0t46 0t46 0t46 0t46 0t46 0" fill="none" stroke="#d0b880" stroke-width="2"></path><path d="M0 75q18 20 37 0t37 0t37 0t37 0t37 0t37 0t37 0t37 0t37 0" fill="none" opacity=".7" stroke="#8b9f62" stroke-width="1.5"></path></svg><span>⟡</span></div>
+</div>
+<div class="hero-base"><span><strong>Infraestructura científica v0.1.6.1</strong> · Análisis exploratorio, no ocupación validada</span><span>Vista única · GitHub Pages</span></div>
+</section>
+<div class="content">
+<div class="notice" role="note"><svg><use href="#i-info"></use></svg><div><strong>Procedencia.</strong> El sitio no utiliza puntos simulados. Sus coordenadas originales se exportan desde la SQLite maestra y se contrastan con JD y la auditoría. Los análisis E2 son exploratorios, no estimaciones de ocupación. <span id="dataStatus">Verificando carga científica…</span></div></div><div class="editorial-copy"><p class="editorial-lead">Esta publicación presenta un registro científico de lectura continua: los párrafos explican la pregunta, las figuras presentan la evidencia y las tablas permiten inspeccionar los datos. La interacción no sustituye a la interpretación.</p><p>Se distinguen registros históricos JD, revisiones Railway, cobertura y scores de tres modelos. La lectura de un candidato de IA no equivale a presencia confirmada ni un descarte humano a ausencia biológica.</p></div>
+<div class="eyebrow">01 · VISIÓN GENERAL</div>
+<div class="section-head compact"><div><h2>Panorama de la evidencia</h2><p>Inventario acústico, fuentes humanas y modelos; corte E2 sujeto a validación.</p></div><button class="button secondary small" id="copySummary"><svg><use href="#i-copy"></use></svg> Copiar resumen</button></div>
+<div aria-label="Filtros del atlas científico" class="filter-panel">
+<div class="filter-heading"><svg><use href="#i-filter"></use></svg><strong>Filtros globales</strong><span>Sincronizados con todas las figuras</span></div>
+<div class="filter-row"><label>Especie<select id="speciesFilter"><option value="all">Ambas especies</option><option value="P. orcesi">P. orcesi</option><option value="P. albipectus">P. albipectus</option></select></label><label>Unidad de manejo<select id="unitFilter"><option value="all">Todas las unidades</option></select></label><label>Año del primer audio<select id="campaignFilter"><option value="all">Todos los años de inicio</option></select></label><button class="button secondary" id="resetFilters" title="Restablecer los filtros"><svg><use href="#i-refresh"></use></svg> Restablecer</button></div>
+</div>
+<div aria-live="polite" class="metric-grid" id="kpis">
+<article class="metric"><span class="metric-label">Estaciones con audio</span><strong id="kpiStations">—</strong><span class="metric-foot">Puntos del subconjunto mostrado</span></article>
+<article class="metric"><span class="metric-label">Archivos acústicos</span><strong id="kpiWav">—</strong><span class="metric-foot">WAV del estudio</span></article>
+<article class="metric"><span class="metric-label">Esfuerzo registrado</span><strong id="kpiHours">—</strong><span class="metric-foot">Horas auditadas E2</span></article>
+<article class="metric"><span class="metric-label">Días con monitoreo</span><strong id="kpiDays">—</strong><span class="metric-foot">Suma de días × estación</span></article>
+</div>
+
+<section class="chapter" data-section="" id="diseno">
+<div class="eyebrow">02 · DISEÑO DE MUESTREO</div>
+<div class="section-head"><div><h2>Arquitectura espacial</h2><p>Puntos geográficos, cohortes de inicio y tipos de evidencia como capas independientes.</p></div><span class="section-num">FIG. 01</span></div><div class="editorial-copy chapter-copy"><p><strong>Diseño del monitoreo.</strong> La distribución de estaciones se presenta primero como una evidencia de esfuerzo: cada círculo identifica una estación de grabación, mientras las cohortes, las revisiones humanas y los elementos de referencia se controlan de manera independiente.</p><p>El selector de capas reproduce la organización de nuestras plantillas SIG originales. Ni un marcador aislado ni un descarte de audio constituyen por sí solos una conclusión sobre ocupación del territorio.</p></div>
+<article class="figure-card map-card" id="mapFigure">
+<div class="fig-top"><div><h3>Mapa interactivo del diseño</h3><p>Control nativo de capas, campañas, símbolos, referencias geográficas y pantalla completa.</p></div><div class="fig-actions"><button aria-label="Mapa en pantalla completa" class="icon-button" data-expand="mapFigure" title="Pantalla completa"><svg><use href="#i-expand"></use></svg></button></div></div>
+
+<div class="map-area" id="mapArea"><div class="leaflet-map" id="leafletMap"></div><div class="fallback-map" id="fallbackMap"></div><div class="fallback-layers" hidden="" id="fallbackLayers"></div><div class="map-overlay-note" id="mapMode">Inicializando cartografía…</div></div>
+<div class="map-bottom compact"><span class="map-scale-text" id="mapSummary">— estaciones con grabación</span></div>
+<section class="ambient-panel" aria-label="Indicadores ambientales" id="ambientPanel"><h4>Contexto ambiental E3–E4</h4><p>La cobertura forestal es una variable espacial, no una estimación de presencia de <em>Pyrrhura</em>. Se comparan píxeles válidos en el territorio completo.</p><div id="ambientStats" class="ambient-stats">Las métricas satelitales se incorporarán al ejecutar Earth Engine.</div></section>
+
+<div class="fig-caption">Figura 01. Estaciones reales exportadas desde coordenadas originales. Selector SIG nativo Leaflet; grupos por año inicial de audio hasta que se valide la asignación histórica de campañas. Capas por fuente y superficies ambientales cuando estén verificadas.</div>
+</article>
+<p class="editorial-follow">Para inspeccionar una estación, haz clic en su marcador y abre la ficha individual. La leyenda de cohortes de inicio utiliza colores, mientras que la evidencia experta se representa mediante símbolos; así mantenemos ambos significados separados.</p>
+</section>
+<section class="chapter" data-section="" id="esfuerzo">
+<div class="eyebrow">03 · COBERTURA Y ESFUERZO</div>
+<div class="section-head"><div><h2>Tiempo de escucha</h2><p>Gráficos Plotly de duración efectiva E2, con controles, ejes rotulados y expansión individual.</p></div><span class="section-num">FIGS. 02–04</span></div><div class="editorial-copy chapter-copy"><p>El volumen de grabaciones no se distribuye uniformemente entre sitios y periodos. Por eso examinamos las horas efectivas, los días observados y su variación temporal antes de interpretar cualquier diferencia en las detecciones.</p><p>Las figuras siguientes son complementarias: la serie resume el esfuerzo a lo largo del tiempo; el calendario muestra sus vacíos y la distribución permite reconocer estaciones con duraciones atípicas.</p></div>
+<article class="figure-card" id="timeFigure">
+<div class="fig-top"><div><h3>Esfuerzo temporal</h3><p>Horas de grabación agrupadas por mes de monitoreo.</p></div><div class="fig-actions"><button aria-label="Exportar datos del gráfico temporal" class="icon-button" data-download="time" title="Exportar datos"><svg><use href="#i-download"></use></svg></button><button aria-label="Gráfico temporal en pantalla completa" class="icon-button" data-expand="timeFigure" title="Pantalla completa"><svg><use href="#i-expand"></use></svg></button></div></div>
+<div class="figure-controls"><label>Visualización<select id="timeMode"><option value="bar">Horas mensuales</option><option value="cumulative">Esfuerzo acumulado</option></select></label><label>Comparación<select id="timeGroup"><option value="species">Por especie</option><option value="campaign">Por cohorte de inicio</option></select></label></div>
+<div aria-label="Gráfico temporal interactivo" class="plot" id="timePlot" role="img"></div><div class="fig-caption"><strong>Figura 02.</strong> Volumen de grabación por periodo. Más esfuerzo no equivale por sí solo a más presencia de la especie.</div>
+</article>
+<div class="figure-grid">
+<article class="figure-card" id="heatFigure"><div class="fig-top"><div><h3>Calendario de actividad</h3><p>Matriz por mes y unidad de manejo.</p></div><div class="fig-actions"><button aria-label="Expandir calendario" class="icon-button" data-expand="heatFigure" title="Pantalla completa"><svg><use href="#i-expand"></use></svg></button></div></div><div aria-label="Mapa de calor de esfuerzo" class="plot compact-plot" id="heatPlot" role="img"></div><div class="fig-caption"><strong>Figura 03.</strong> Horas grabadas por unidad y mes. Celdas sin registro ≠ ausencia biológica.</div></article>
+<article class="figure-card" id="distFigure"><div class="fig-top"><div><h3>Distribución del esfuerzo</h3><p>Variabilidad entre estaciones activas.</p></div><div class="fig-actions"><button aria-label="Expandir distribución" class="icon-button" data-expand="distFigure" title="Pantalla completa"><svg><use href="#i-expand"></use></svg></button></div></div><div aria-label="Distribución de horas por estación" class="plot compact-plot" id="distPlot" role="img"></div><div class="fig-caption"><strong>Figura 04.</strong> Distribución y valores atípicos; muestra esfuerzo, no abundancia.</div></article>
+</div>
+</section>
+<section class="chapter" data-section="" id="evidencias">
+<div class="eyebrow">04 · EVIDENCIA Y CLASIFICACIÓN</div>
+<div class="section-head"><div><h2>Fuentes, no equivalencias</h2><p>La identificación de un experto y la inferencia de IA no significan lo mismo.</p></div><span class="section-num">FIGS. 05–06</span></div><div class="editorial-copy chapter-copy"><p>El análisis distingue tres clases de información: identificaciones independientes de JD, decisiones de validación en Railway y señales propuestas por clasificadores automáticos. Ninguna de ellas debe sustituir a las otras.</p><p>Las comparaciones de scores se interpretan dentro de cada modelo. Un puntaje elevado describe una prioridad de inspección y no equivale, por sí solo, a presencia confirmada.</p></div>
+<div aria-label="Perspectiva de evidencia" class="tab-strip" role="tablist"><button aria-selected="true" class="tab active" data-tab="human" role="tab">Validación humana</button><button aria-selected="false" class="tab" data-tab="models" role="tab">Candidatos de IA</button><button aria-selected="false" class="tab" data-tab="coverage" role="tab">Cobertura de fuentes</button></div>
+<article class="figure-card evidence-figure" id="evidenceFigure"><div class="fig-top"><div><h3 id="evidenceTitle">Identificaciones y revisiones</h3><p id="evidenceSubtitle">JD y Railway se presentan por separado.</p></div><div class="fig-actions"><button aria-label="Expandir evidencias" class="icon-button" data-expand="evidenceFigure" title="Pantalla completa"><svg><use href="#i-expand"></use></svg></button></div></div><div class="plot compact-plot" id="evidencePlot"></div><div class="fig-caption" id="evidenceCaption"><strong>Figura 05.</strong> Indicadores demostrativos, no estimaciones de ocupación.</div></article>
+<div class="interpretation"><span class="interpret-icon">!</span><div><h4>Frontera de inferencia</h4><p><strong>Presencia humana</strong> = evidencia confirmada. <strong>Candidato IA</strong> = señal que requiere validación. <strong>No detección</strong> en un día con grabaciones ≠ ausencia de individuos.</p></div></div>
+<article class="figure-card" id="modelFigure"><div class="fig-top"><div><h3>Perfil de scores y umbrales</h3><p>Scores de ventanas candidatas reales, sin comparación automática de calibración.</p></div><div class="fig-actions"><button aria-label="Expandir gráfico de scores" class="icon-button" data-expand="modelFigure" title="Pantalla completa"><svg><use href="#i-expand"></use></svg></button></div></div><div class="figure-controls"><label>Modelo<select id="modelSelect"><option value="general">General V1</option><option value="hier">Jerárquico</option><option value="unique">Único</option></select></label><label>Umbral ilustrativo<input id="threshold" max="100" min="0" type="range" value="55"/><output id="thresholdValue">0,55</output></label></div><div class="plot" id="modelPlot"></div><div class="fig-caption"><strong>Figura 06.</strong> Scores crudos de candidatos reales del atlas E2, no todas las ventanas inferidas. El umbral es exploratorio, no calibrado.</div></article>
+<div class="table-editorial-wrap" id="evaluationTableWrap">
+ <div class="table-short-head"><span>Tabla E2 · Evaluación técnica</span><h3>Comparación descriptiva de clasificadores</h3>
+ <p>Referencia etiquetada y descartes explícitos: conjuntos potencialmente sesgados por selección. AUC y AP no miden aquí desempeño poblacional independiente.</p></div>
+ <div class="short-scroll"><table class="table-editorial" id="evaluationTable">
+ <thead><tr><th>Especie</th><th>Clasificador</th><th>Positivas</th><th>Descartes</th><th>AUC</th><th>AP</th><th>Estado técnico</th></tr></thead>
+ <tbody id="evaluationTableBody"><tr><td colspan="7">Preparando evaluación E2…</td></tr></tbody></table></div>
+ <p class="table-caption">Tabla E2. Métricas conservadas de la SQLite maestra. La selección de referencias por modelos impide generalizarlas sin prueba ciega independiente.</p>
+</div>
+</section>
+<section class="chapter" data-section="" id="tabla">
+<div class="eyebrow">05 · EXPLORACIÓN TABULAR</div>
+<div class="section-head"><div><h2>Datos inspeccionables</h2><p>Dos formatos normalizados: tabla editorial breve y explorador científico avanzado.</p></div><span class="section-num">TABLA 01</span></div><div class="editorial-copy chapter-copy"><p>Las tablas cumplen funciones distintas dentro de una publicación científica. Una tabla corta sintetiza la comparación y debe leerse sin controles; un explorador largo permite comprobar registros, aplicar filtros y exportar resultados.</p><p>Usaremos exactamente estos dos formatos en toda la presentación. Se evita cargar las tablas editoriales con búsqueda y paginación, y se evita presentar inventarios extensos como páginas estáticas imposibles de examinar.</p></div>
+<div class="table-editorial-wrap" id="shortTable">
+<div class="table-short-head"><span>Tabla 01 · Comparación resumida</span><h3>Esfuerzo por especie</h3><p>Una comparación breve, integrada a la narración, sin filtros ni paginación.</p></div>
+<div class="short-scroll"><table class="table-editorial" id="summaryTable"><thead><tr><th>Especie</th><th>Estaciones</th><th>WAV</th><th>Horas</th><th>Días × estación</th></tr></thead><tbody id="summaryTableBody"><tr><td colspan="5">Preparando tabla…</td></tr></tbody></table></div>
+<p class="table-caption"><strong>Tabla 01.</strong> Registros acústicos auditados por fuente, sin inferencia de abundancia.</p>
+</div><div class="advanced-intro"><span class="table-kicker">Tabla 02 · Exploración completa</span><h3>Inventario interactivo de estaciones</h3><p>Cuando la información supera una comparación editorial, usamos búsqueda, filtros, ordenamiento y exportación sin sacrificar trazabilidad.</p></div><article class="figure-card" id="tableFigure"><div class="fig-top"><div><h3>Estaciones de monitoreo</h3><p>Una fila por punto real, con indicadores de esfuerzo y evidencia.</p></div><div class="fig-actions"><button class="button secondary small" id="csvExport"><svg><use href="#i-download"></use></svg> CSV</button><button aria-label="Expandir tabla" class="icon-button" data-expand="tableFigure" title="Pantalla completa"><svg><use href="#i-expand"></use></svg></button></div></div>
+<div class="table-tools"><label class="table-search"><svg><use href="#i-search"></use></svg><input aria-label="Buscar en la tabla" id="tableSearch" placeholder="Buscar en toda la tabla…" type="search"/></label><label>Filas<select id="pageSize"><option>10</option><option selected="">25</option><option>50</option><option>100</option></select></label><button class="button secondary small" id="autoColumns">Ajustar columnas</button></div>
+<div aria-label="Tabla desplazable horizontal y verticalmente" class="table-scroll" id="tableScroll" tabindex="0"><table id="dataTable"><thead><tr id="tableHead"></tr><tr id="tableFilters"></tr></thead><tbody id="tableBody"></tbody></table></div><div class="table-footer"><span id="tableCount">— registros</span><div class="pager"><button class="button secondary small" id="prevPage"><svg><use href="#i-chevron-left"></use></svg> Anterior</button><span id="pageInfo">Página 1</span><button class="button secondary small" id="nextPage">Siguiente <svg><use href="#i-chevron-right"></use></svg></button></div></div><div class="fig-caption">Tabla 02. Explorador de puntos reales con búsqueda, filtros de columna, paginación, ajuste de anchura y exportación CSV (incluye GPS original).</div>
+</article>
+</section>
+<section class="chapter" data-section="" id="metodos">
+<div class="eyebrow">06 · MÉTODOS Y REPRODUCIBILIDAD</div><div class="section-head"><div><h2>Matemática legible, metodología trazable</h2><p>Toda la matemática de esta sección se consulta en un único bloque continuo con MathJax SVG.</p></div><span class="section-num">APÉNDICE</span></div><p class="math-intro">La lectura principal conserva solo la explicación necesaria. Abre el apartado siguiente para consultar <strong>todos</strong> los desarrollos, las definiciones, los supuestos y las limitaciones en una única secuencia, con MathJax SVG.</p><div class="editorial-copy chapter-copy"><p>El fundamento matemático debe poder leerse de principio a fin, sin interrupciones ni tarjetas. Por ello todas las expresiones de una sección se reunirán en un único bloque desplegable.</p><p>Las definiciones de esfuerzo y recurrencia que aparecen aquí son ilustrativas. Los supuestos y criterios de evidencia se fijarán de forma reproducible antes de inferir resultados ecológicos.</p></div>
+
+
+
+
+<details class="accordion math-contract" id="mathBlock"><summary><span>Fundamento matemático y metodología completa</span><svg><use href="#i-chevron-down"></use></svg></summary><div class="math-body">
+<h3>1. Definición del esfuerzo acústico</h3>
+<p>Para una estación <em>i</em>, la suma de las duraciones disponibles expresada en horas es:</p>
+<div class="math-equation">\[E_i=\sum_{j=1}^{n_i}\frac{d_{ij}}{3600}\]</div>
+<p>Donde \(n_i\) representa el número de WAV de la estación y \(d_{ij}\) la duración del audio <em>j</em> en segundos. Solamente se contabilizan archivos realmente asociados al punto. La ausencia de WAV implica ausencia de esfuerzo observado, nunca ausencia de la especie.</p>
+<h3>2. Esfuerzo diario y observación</h3>
+<p>El esfuerzo debe conservar la dimensión temporal para distinguir días monitoreados de días sin grabación:</p>
+<div class="math-equation">\[E_{it}=\sum_{j\in\mathcal W(i,t)} \frac{d_j}{3600}\]</div>
+<p>El conjunto \(\mathcal W(i,t)\) contiene los WAV asignados al punto <em>i</em> durante el día <em>t</em>. Una fila con \(E_{it}=0\) se trata como <strong>sin esfuerzo</strong>, no como no detección.</p>
+<h3>3. Recurrencia observada</h3>
+<p>Para días con grabación, una medida descriptiva de recurrencia de evidencia es:</p>
+<div class="math-equation">\[R_i=\frac{\sum_t \mathbb{1}(y_{it}=1\ \wedge\ E_{it}&gt;0)}{\sum_t \mathbb{1}(E_{it}&gt;0)}\]</div>
+<p>La variable \(y_{it}\) se define según <strong>una fuente concreta</strong> (por ejemplo, identificaciones humanas de JD), sin combinar detecciones de IA no validadas con presencia experta. Esta frecuencia no debe presentarse como ocupación, abundancia ni probabilidad de detección.</p>
+<h3>4. Procedencia y condiciones de interpretación</h3>
+<p>JD aporta anotaciones humanas independientes; Railway aporta revisiones de propuestas seleccionadas (con sesgo de selección). General, Jerárquico y Único producen scores con cobertura y calibración distintas. Las comparaciones de modelos requieren referencias y denominadores pertinentes; los descartes de grabaciones no equivalen a ausencias biológicas.</p>
+<h3>5. Supuestos y limitaciones</h3>
+<p>La duración utilizable debe derivarse de metadatos verificados. Deben identificarse grabaciones duplicadas, interrupciones, campañas superpuestas y puntos con coordenadas compartidas. Los modelos de ocupación y detectabilidad requieren un diseño temporal y una evaluación estadística adicionales, que esta maqueta no representa.</p>
+<p class="math-close-note">Las ecuaciones definen indicadores exploratorios; la inferencia de ocupación requiere modelar detección y errores de clasificación.</p>
+</div></details><div class="final-note"><strong>Una sola publicación estática.</strong><p>Esta publicación contiene un único <code>index.html</code> y sus recursos. No consulta SQLite ni servicios de datos en ejecución. El maestro <code>analisis_pyrrhura_2026.py</code> integra análisis en la misma SQLite y genera automáticamente este sitio con las coordenadas originales. GitHub Pages publica los archivos estáticos subidos al repositorio.</p></div>
+</section>
+<footer class="footer"><img alt="Jocotoco" src="assets/brand/jocotoco_logo_green.svg"/><div><strong>Fundación Jocotoco · Observatorio Pyrrhura</strong><span>Diseño 0.1.5.7 + atlas científico 0.1.5.5</span></div><a href="#inicio">Volver al inicio ↑</a></footer>
+</div>
+</main>
+</div>
+</div>
+<div class="search-modal" hidden="" id="searchDialog"><div class="search-backdrop" data-close-search=""></div><div aria-label="Buscar en la presentación" aria-modal="true" class="search-box" role="dialog"><div class="search-box-top"><svg><use href="#i-search"></use></svg><input autocomplete="off" id="globalSearch" placeholder="Buscar: mapas, tablas, métodos…" type="search"/><button aria-label="Cerrar búsqueda" class="icon-button" id="closeSearch"><svg><use href="#i-close"></use></svg></button></div><div class="search-items" id="searchItems"></div><small>Pulsa / para abrir · Esc para cerrar</small></div></div>
+<dialog class="point-modal" hidden="" id="pointModal"><div class="point-backdrop" data-close-point=""></div><article aria-label="Ficha de estación" aria-modal="true" class="point-dialog" role="dialog"><button aria-label="Cerrar ficha" class="icon-button point-close" id="closePoint"><svg><use href="#i-close"></use></svg></button><div id="pointDetail"></div></article></dialog>
+<button aria-label="Volver arriba" class="back-top" id="backTop" title="Volver arriba"><svg><use href="#i-arrow-up"></use></svg></button>
+</body>
+</html>

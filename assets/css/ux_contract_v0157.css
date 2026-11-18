@@ -1,0 +1,128 @@
+/* v0.1.5.7 — contrato editorial Red Inteligente + SIG Scytalopus
+   Esta hoja complementa, sin sobrescribir, la base UX v0.1.5.6. */
+:root{--sidebar:296px;--side-width:296px;--content-line:74ch}
+body{line-height:1.62;background:#fff}
+/* índice: numeración y marca funcional, no iconos por entrada */
+.side-brand{min-height:78px}
+.brand-toggle{width:46px;height:50px;flex:0 0 auto;background:transparent;border:1px solid transparent;border-radius:9px;padding:2px;display:grid;place-items:center;cursor:pointer;transition:background .2s ease}
+.brand-toggle:hover,.brand-toggle:focus-visible{background:#edf0df;border-color:#c9d0b5;outline-offset:2px}
+.brand-toggle img{max-width:100%;width:36px;height:45px;object-fit:contain}
+.toc{padding-bottom:10px}
+.toc-link{gap:11px;white-space:normal;min-height:38px;padding:8px 10px;font-size:12.4px;line-height:1.31}
+.toc-link .toc-index{width:32px;flex:0 0 32px;font-size:11px;font-variant-numeric:tabular-nums;color:#927e4c;font-weight:800;letter-spacing:.025em}
+.toc-link .toc-text{min-width:0;overflow-wrap:anywhere}
+.toc-link.toc-sub{font-size:11.4px;min-height:28px;padding-top:5px;padding-bottom:5px;padding-left:20px;font-weight:520}
+.toc-link.toc-sub .toc-index{width:32px;flex-basis:32px;font-size:10px;color:#9b9f96}
+.toc-link.toc-sub.active{font-weight:780}
+.app-shell.collapsed .toc-link{padding-left:0;padding-right:0;justify-content:center;min-height:38px}
+.app-shell.collapsed .toc-link .toc-index{font-size:10px;flex:0 0 39px;text-align:center;width:39px}
+.app-shell.collapsed .toc-link .toc-text{display:none}
+.app-shell.collapsed .toc-link.toc-sub{display:none}
+.app-shell.collapsed .brand-toggle{margin:0 auto}
+.app-shell.collapsed .side-brand{padding:9px 5px}
+.app-shell.collapsed .side-close{display:none}
+.app-shell.collapsed .side-brand-word{display:none}
+.side-logo{border-radius:0}
+/* Estilo editorial, prosa de Red Inteligente sin tarjetas fragmentadas */
+.content{width:min(1420px,100%);padding-left:clamp(25px,4vw,65px);padding-right:clamp(25px,4vw,65px)}
+.editorial-copy{max-width:var(--content-line);font-size:clamp(14px,1.05vw,16px);line-height:1.83;color:#39443e}
+.editorial-copy p{margin:0 0 15px}
+.editorial-copy .editorial-lead{font-size:clamp(16px,1.25vw,19px);line-height:1.72;color:#263b31}
+.chapter-copy{margin:4px 0 27px}
+.editorial-follow{max-width:var(--content-line);font-size:14px;line-height:1.75;color:#4b5b51;margin:17px 0 0}
+.section-head{margin-bottom:12px}
+.chapter>.section-head h2{font-weight:550;letter-spacing:-.02em}
+.figure-card{box-shadow:0 5px 21px rgba(28,38,33,.045);border-radius:9px}
+.fig-caption,.table-caption{line-height:1.65}
+/* Nativo Leaflet SIG Scytalopus: conservar iconografía y radios/checks */
+#leafletMap .leaflet-control-layers{border-radius:8px;box-shadow:0 2px 10px #0003;font-size:12px;max-width:min(320px,calc(100vw - 30px));border:0}
+#leafletMap .leaflet-control-layers-expanded{min-width:min(270px,calc(100vw - 30px));padding:9px 10px 8px;max-height:min(68vh,490px);overflow-y:auto}
+#leafletMap .leaflet-control-layers label{margin:3px 0;line-height:1.3;display:block;color:#252a28}
+#leafletMap .leaflet-control-layers label span{vertical-align:middle}
+#leafletMap .leaflet-control-layers input{vertical-align:middle;accent-color:#5F611E}
+#leafletMap .leaflet-control-layers .base-icon{display:inline-block;width:20px;text-align:center;margin:0 6px 0 1px;font-size:15px;vertical-align:-1px}
+#leafletMap .leaflet-control-layers .legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 7px 0 3px;vertical-align:middle;border:1px solid #252a2855}
+#leafletMap .leaflet-control-layers .legend-symbol{display:inline-block;width:19px;text-align:center;margin:0 5px 0 1px;font-size:17px;font-weight:900;vertical-align:-1px}
+#leafletMap .leaflet-control-layers .layer-separator-row{display:block;height:0;border-top:1px solid #dfe4e0;margin:6px 0 5px}
+#leafletMap .leaflet-control-layers .sig-divider{height:12px!important;display:block;padding:0!important;margin:4px 0!important}
+#leafletMap .leaflet-control-layers .campaign-master-row{display:block;font-weight:800;padding-bottom:4px;margin-bottom:5px;border-bottom:1px solid #e1e5e2}
+#leafletMap .leaflet-control-zoom .zoom-fullscreen{font-size:19px!important;line-height:30px!important;border-top:1px solid #ccc;text-decoration:none;text-align:center;cursor:pointer}
+#leafletMap .leaflet-control-container{font-family:Roboto,Arial,sans-serif}
+#mapArea:fullscreen{height:100vh!important;height:100dvh!important;border-radius:0;background:#e8eee3}
+#mapArea:fullscreen #leafletMap{height:100%}
+#mapArea:fullscreen .map-overlay-note{z-index:600}
+#mapArea:fullscreen .fallback-layers{max-height:70vh}
+.sig-title{font-size:14px;font-weight:800;color:#252a28;margin:0 0 9px}
+.sig-title small{color:#a88529;font-size:8px;margin-left:6px;letter-spacing:.07em}
+.sig-popgrid{display:grid;grid-template-columns:minmax(105px,auto) minmax(110px,1fr);gap:4px 9px;font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+.sig-popgrid span{color:#66706b}.sig-popgrid strong{font-weight:710;color:#252a28}
+.sig-detail-button{margin-top:13px;border:0;border-radius:5px;background:#5F611E;color:#fff;padding:8px 11px;font-size:11px;font-weight:800;cursor:pointer;width:100%;text-align:center}
+.sig-detail-button:hover{background:#42491b}
+.sig-divicon{background:none;border:none}.sig-symbol{display:block;font-weight:900;font-size:23px;line-height:28px;text-align:center;text-shadow:-1px -1px #fff,1px -1px #fff,-1px 1px #fff,1px 1px #fff,0 0 3px #fff}
+.sig-label{color:#161e18;font-size:11px;font-weight:800;white-space:nowrap;text-shadow:-1px -1px #fff,1px -1px #fff,-1px 1px #fff,1px 1px #fff,0 0 3px #fff}
+.map-bottom.compact{padding:6px 0 0;justify-content:flex-end}
+.map-card .map-area{height:clamp(390px,54vw,590px)}
+.fallback-hint{font-size:10px;color:#66706b;line-height:1.4;margin:0 0 8px}
+.fallback-sep{height:1px;background:#e2e5dc;margin:7px 0}
+.sig-fallback-label{font-weight:800;font-size:11px;fill:#2e342e;paint-order:stroke;stroke:#fff;stroke-width:3px}
+/* 2 formatos tipográficos de tabla. 01 editorial: sin controles. 02 explorador */
+.table-editorial-wrap{margin:14px 0 38px;max-width:100%;min-width:0}
+.table-short-head span,.table-kicker{font-size:10px;letter-spacing:.13em;font-weight:830;color:#a88529;text-transform:uppercase}
+.table-short-head h3,.advanced-intro h3{margin:6px 0 4px;font-size:20px;font-weight:640;color:#273d30}
+.table-short-head p,.advanced-intro p{margin:0 0 14px;max-width:74ch;color:#69736a;font-size:13px;line-height:1.6}
+.short-scroll{max-width:100%;overflow-x:auto;border-top:2px solid #5F611E;border-bottom:1px solid #d7ddd2}
+.table-editorial{border-collapse:collapse;min-width:640px;width:100%;font-size:13px;line-height:1.55;font-variant-numeric:tabular-nums}
+.table-editorial thead{background:#f7f8f1;color:#566019}
+.table-editorial th,.table-editorial td{padding:13px 12px;text-align:right;border-bottom:1px solid #e8ebe4}
+.table-editorial th:first-child{text-align:left}
+.table-editorial tbody th{font-weight:600;color:#273d30}
+.table-editorial .editorial-total{background:#f8f6ee;font-weight:800}
+.table-editorial .editorial-total th{font-style:normal}
+.table-caption{font-size:11.5px;color:#69736a;margin:9px 0 0}
+.advanced-intro{margin:0 0 12px;max-width:76ch}
+.table-scroll{overscroll-behavior:contain}
+/* Matemática: ÚNICO documento continuo por sección (MathJax SVG). */
+.math-intro{font-size:14px;color:#46554b;line-height:1.78;max-width:75ch;margin:14px 0 17px}
+.math-contract{border:1px solid #deded3;background:#fff;border-radius:9px;margin-bottom:24px;overflow:hidden;scroll-margin-top:90px}
+.math-contract>summary{display:flex;justify-content:space-between;gap:15px;padding:17px 21px;cursor:pointer;font-size:15px;color:#405321;font-weight:780;background:#f8f9f3}
+.math-contract>summary svg{width:18px;height:18px;flex-shrink:0}
+.math-contract .math-body{padding:19px clamp(14px,3vw,35px) 27px;max-width:100%;color:#3d4840;line-height:1.82}
+.math-body h3{font-size:18px;color:#273d30;margin:29px 0 10px;font-weight:700}
+.math-body h3:first-child{margin-top:0}
+.math-body p{max-width:84ch;margin:0 0 17px;font-size:14px}
+.math-equation{max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;margin:19px 0 24px;padding:10px 7px;border:0;background:transparent;text-align:center}
+.math-equation mjx-container{max-width:100%!important;min-width:max-content!important;margin:0 auto!important}
+.math-close-note{border-top:1px solid #e5e9dd;padding-top:14px;color:#687669;font-size:12px!important}
+/* Responsive: ningún componente ni popup invade el viewport */
+@media(min-width:951px){.app-shell:not(.collapsed){--side-width:296px}}
+@media(max-width:950px){
+ .app-shell:not(.collapsed){--side-width:0px}
+ .sidebar{width:265px!important}
+ .app-shell.collapsed .toc-link.toc-sub{display:flex}
+ .app-shell.collapsed .toc-link .toc-text{display:block}
+ .app-shell.collapsed .toc-link{padding:8px 10px;justify-content:initial}
+ .app-shell.collapsed .toc-link.toc-sub{padding-left:20px}
+ .app-shell.collapsed .side-brand{padding:12px}
+ .app-shell.collapsed .side-brand-word{display:block}
+ .app-shell.collapsed .side-close{display:flex}
+ .app-shell.collapsed .brand-toggle{margin:0}
+ .map-card .map-area{height:clamp(370px,60vw,570px)}
+}
+@media(max-width:700px){
+ .editorial-copy{font-size:14px;line-height:1.73}
+ .chapter-copy{margin-bottom:20px}
+ .toc-link{font-size:12px}
+ .map-card .map-area{height:480px}
+ .map-card .figure-card{padding:10px}
+ #leafletMap .leaflet-control-layers-expanded{max-height:54vh;min-width:min(260px,calc(100vw - 25px))}
+ .math-body h3{font-size:16px}
+ .math-contract .math-body{padding:17px 13px 21px}
+ .math-contract>summary{font-size:13px;padding:14px 13px}
+ .sig-popgrid{grid-template-columns:95px 1fr}
+ .table-editorial{font-size:12px}
+}
+/* FIX: CSS global del acordeón reservaba 17x17 px a TODOS los SVG,
+   incluyendo las ecuaciones de MathJax. Anular solo para SVG matemáticos. */
+.math-contract .math-equation mjx-container svg,
+.math-contract .math-body mjx-container svg{width:auto!important;height:auto!important;max-width:none!important;min-width:0!important}
+.math-contract .math-body mjx-container{font-size:110%!important}

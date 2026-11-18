@@ -1,0 +1,35 @@
+/* 0.1.5.8 · Procedencia visible y tabla de ficha, sin interferir UX v0.1.5.7 */
+.data-unavailable{padding:28px;color:#675f48;font-size:14px;line-height:1.7}
+#dataStatus{display:inline-block;font-weight:650;margin-left:.45em}
+#dataStatus.pending{color:#8c521e}
+.point-subtable{margin-top:18px;max-width:100%;overflow-x:auto}
+.point-subtable h4{font-size:13px;font-weight:750;margin:10px 0}
+.point-subtable table{border-collapse:collapse;width:100%;font-size:12px}
+.point-subtable th,.point-subtable td{padding:7px 9px;text-align:left;border-bottom:1px solid #d9ded4;white-space:nowrap}
+.point-subtable th{background:#f1f3ed}
+@media(max-width:520px){
+ .top-right .demo-tag{display:none}
+ .topbar{gap:5px}
+ .top-left{gap:7px}
+ .header-brand{gap:5px}
+ .header-brand img{width:82px}
+ .header-strap{font-size:8px;letter-spacing:.05em}
+ .top-version{font-size:9px;letter-spacing:0}
+ .point-dialog{padding:23px 17px 16px;max-width:calc(100vw - 24px)}
+}
+
+/* v0.1.6.1 — ficha como diálogo NATIVO en la top layer: nunca detrás de Leaflet */
+dialog.point-modal{position:fixed;inset:0;box-sizing:border-box;margin:0;width:100vw;max-width:none;height:100dvh;max-height:none;border:0;background:transparent;padding:12px;overflow:hidden;z-index:2147483000;place-items:center;isolation:isolate}
+dialog.point-modal::backdrop{background:rgba(21,31,27,.72)}
+dialog.point-modal .point-backdrop{background:transparent}
+dialog.point-modal .point-dialog{width:min(600px,100%);max-height:min(82dvh,780px);overflow-y:auto;overscroll-behavior:contain;box-shadow:0 22px 75px #0006}
+body.point-modal-open{overflow:hidden}
+@media(max-width:520px){dialog.point-modal{padding:10px}dialog.point-modal .point-dialog{max-height:calc(100dvh - 28px);padding:20px 16px}}
+
+/* Indicadores satelitales verificables E3/E4 */
+.ambient-panel{background:var(--surface,#fff);border-top:1px solid rgba(54,78,63,.16);padding:15px 18px;position:relative;z-index:1}
+.ambient-panel h4{margin:0 0 5px;font-size:14px;color:var(--ink,#243b30)}
+.ambient-panel p{margin:0 0 12px;font-size:12px;line-height:1.5;color:var(--muted,#54645b)}
+.ambient-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;font-size:12px}
+.ambient-stat{display:flex;flex-direction:column;gap:5px;padding:10px 12px;border:1px solid #e0e8df;border-radius:9px;overflow-wrap:anywhere}
+.ambient-stat strong{font-size:13px}
