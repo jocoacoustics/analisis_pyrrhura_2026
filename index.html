@@ -1,4 +1,3 @@
-<!doctype html>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -7,7 +6,7 @@
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="Atlas científico interactivo Pyrrhura. Coordenadas originales verificadas; evidencia JD, Railway y clasificadores; versión 0.1.5.8." name="description"/>
 <meta content="light" name="color-scheme"/>
-<title>Análisis Pyrrhura 2026 · Observatorio v0.1.6</title>
+<title>Análisis Pyrrhura 2026 · Observatorio v0.2.0</title>
 <link href="assets/brand/jocotoco_logo.png" rel="icon" type="image/png"/>
 <link href="assets/css/styles.css" rel="stylesheet"/><link href="assets/css/ux_contract_v0157.css" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
@@ -18,8 +17,10 @@
 <script defer="" src="datos/observatorio.js"></script>
 <script defer="" src="assets/js/geografia.js"></script>
 <script defer="" src="datos/ambiente.js"></script>
+<script defer="" src="datos/ecologia.js"></script>
 <script defer="" src="assets/js/app.js"></script>
-<link rel="stylesheet" href="assets/css/v0158.css"/></head>
+<script defer="" src="assets/js/ecologia.js"></script>
+<link rel="stylesheet" href="assets/css/v0158.css"/><link rel="stylesheet" href="assets/css/ecologia.css"/></head>
 <body>
 <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-menu" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></symbol>
@@ -55,7 +56,7 @@
 <div class="side-caption">PRESENTACIÓN INTERACTIVA</div>
 <div class="side-title"><span class="side-text">Contenido</span><span class="side-small">Índice</span></div>
 <div class="side-search"><svg><use href="#i-search"></use></svg><input aria-label="Buscar contenido" id="sideSearch" placeholder="Buscar secciones…" type="search"/><kbd>/</kbd></div>
-<nav aria-label="Secciones de la presentación" class="toc" id="toc"><a class="toc-link active" data-title="Inicio y alcance" href="#inicio"><span class="toc-index">01</span><span class="toc-text">Inicio y alcance</span></a><a class="toc-link" data-title="Diseño del estudio" href="#diseno"><span class="toc-index">02</span><span class="toc-text">Diseño del estudio</span></a><a class="toc-link toc-sub" data-title="Mapa SIG" href="#mapFigure"><span class="toc-index">02.1</span><span class="toc-text">Mapa SIG</span></a><a class="toc-link" data-title="Esfuerzo acústico" href="#esfuerzo"><span class="toc-index">03</span><span class="toc-text">Esfuerzo acústico</span></a><a class="toc-link toc-sub" data-title="Serie temporal" href="#timeFigure"><span class="toc-index">03.1</span><span class="toc-text">Serie temporal</span></a><a class="toc-link toc-sub" data-title="Calendario" href="#heatFigure"><span class="toc-index">03.2</span><span class="toc-text">Calendario</span></a><a class="toc-link toc-sub" data-title="Distribución" href="#distFigure"><span class="toc-index">03.3</span><span class="toc-text">Distribución</span></a><a class="toc-link" data-title="Fuentes de evidencia" href="#evidencias"><span class="toc-index">04</span><span class="toc-text">Fuentes de evidencia</span></a><a class="toc-link toc-sub" data-title="Validación experta" href="#evidenceFigure"><span class="toc-index">04.1</span><span class="toc-text">Validación experta</span></a><a class="toc-link toc-sub" data-title="Clasificadores" href="#modelFigure"><span class="toc-index">04.2</span><span class="toc-text">Clasificadores</span></a><a class="toc-link" data-title="Tablas del estudio" href="#tabla"><span class="toc-index">05</span><span class="toc-text">Tablas del estudio</span></a><a class="toc-link toc-sub" data-title="Tabla editorial" href="#shortTable"><span class="toc-index">05.1</span><span class="toc-text">Tabla editorial</span></a><a class="toc-link toc-sub" data-title="Explorador avanzado" href="#tableFigure"><span class="toc-index">05.2</span><span class="toc-text">Explorador avanzado</span></a><a class="toc-link" data-title="Métodos" href="#metodos"><span class="toc-index">06</span><span class="toc-text">Métodos</span></a><a class="toc-link toc-sub" data-title="Fundamento matemático" href="#mathBlock"><span class="toc-index">06.1</span><span class="toc-text">Fundamento matemático</span></a></nav>
+<nav aria-label="Secciones de la presentación" class="toc" id="toc"><a class="toc-link active" data-title="Inicio y alcance" href="#inicio"><span class="toc-index">01</span><span class="toc-text">Inicio y alcance</span></a><a class="toc-link" data-title="Diseño del estudio" href="#diseno"><span class="toc-index">02</span><span class="toc-text">Diseño del estudio</span></a><a class="toc-link toc-sub" data-title="Mapa SIG" href="#mapFigure"><span class="toc-index">02.1</span><span class="toc-text">Mapa SIG</span></a><a class="toc-link" data-title="Esfuerzo acústico" href="#esfuerzo"><span class="toc-index">03</span><span class="toc-text">Esfuerzo acústico</span></a><a class="toc-link toc-sub" data-title="Serie temporal" href="#timeFigure"><span class="toc-index">03.1</span><span class="toc-text">Serie temporal</span></a><a class="toc-link toc-sub" data-title="Calendario" href="#heatFigure"><span class="toc-index">03.2</span><span class="toc-text">Calendario</span></a><a class="toc-link toc-sub" data-title="Distribución" href="#distFigure"><span class="toc-index">03.3</span><span class="toc-text">Distribución</span></a><a class="toc-link" data-title="Fuentes de evidencia" href="#evidencias"><span class="toc-index">04</span><span class="toc-text">Fuentes de evidencia</span></a><a class="toc-link toc-sub" data-title="Validación experta" href="#evidenceFigure"><span class="toc-index">04.1</span><span class="toc-text">Validación experta</span></a><a class="toc-link toc-sub" data-title="Clasificadores" href="#modelFigure"><span class="toc-index">04.2</span><span class="toc-text">Clasificadores</span></a><a class="toc-link" data-title="Tablas del estudio" href="#tabla"><span class="toc-index">05</span><span class="toc-text">Tablas del estudio</span></a><a class="toc-link toc-sub" data-title="Tabla editorial" href="#shortTable"><span class="toc-index">05.1</span><span class="toc-text">Tabla editorial</span></a><a class="toc-link toc-sub" data-title="Explorador avanzado" href="#tableFigure"><span class="toc-index">05.2</span><span class="toc-text">Explorador avanzado</span></a><a class="toc-link" data-title="Métodos" href="#metodos"><span class="toc-index">06</span><span class="toc-text">Métodos</span></a><a class="toc-link toc-sub" data-title="Fundamento matemático" href="#mathBlock"><span class="toc-index">06.1</span><span class="toc-text">Fundamento matemático</span></a><a class="toc-link" data-title="Ecología territorial" href="#ecologia"><span class="toc-index">07</span><span class="toc-text">Ecología territorial</span></a></nav>
 <div class="side-footer"><span class="demo-dot"></span><span class="side-text">Pyrrhura · ciencia reproducible</span><span class="side-small">2026</span></div>
 </aside>
 <div class="workspace">
@@ -66,7 +67,7 @@
 <div class="header-brand"><img alt="Fundación Jocotoco" src="assets/brand/jocotoco_logo_main.svg"/><span class="header-divider"></span><span class="header-strap">OBSERVATORIO<br/>ACÚSTICO</span></div>
 </div>
 <div class="top-right">
-<span class="top-version">ANÁLISIS · v0.1.6</span>
+<span class="top-version">ANÁLISIS · v0.2.0</span>
 <span class="demo-tag">DATOS VERIFICADOS / PENDIENTES</span>
 <button aria-label="Buscar" class="icon-button top-search" id="openSearch" title="Buscar (/)"><svg><use href="#i-search"></use></svg></button>
 </div>
@@ -79,7 +80,7 @@
 <div class="hero-tags"><span>Dos especies</span><span>Mapas SIG</span><span>Reproducibilidad</span></div></div>
 <div aria-hidden="true" class="hero-art"><div class="art-circle c1"></div><div class="art-circle c2"></div><div class="art-circle c3"></div><svg viewbox="0 0 360 140"><path d="M0 74q22-45 46 0t46 0t46 0t46 0t46 0t46 0t46 0t46 0t46 0" fill="none" stroke="#d0b880" stroke-width="2"></path><path d="M0 75q18 20 37 0t37 0t37 0t37 0t37 0t37 0t37 0t37 0t37 0" fill="none" opacity=".7" stroke="#8b9f62" stroke-width="1.5"></path></svg><span>⟡</span></div>
 </div>
-<div class="hero-base"><span><strong>Infraestructura científica v0.1.6.1</strong> · Análisis exploratorio, no ocupación validada</span><span>Vista única · GitHub Pages</span></div>
+<div class="hero-base"><span><strong>Infraestructura científica v0.2.0</strong> · Análisis exploratorio, no ocupación validada</span><span>Vista única · GitHub Pages</span></div>
 </section>
 <div class="content">
 <div class="notice" role="note"><svg><use href="#i-info"></use></svg><div><strong>Procedencia.</strong> El sitio no utiliza puntos simulados. Sus coordenadas originales se exportan desde la SQLite maestra y se contrastan con JD y la auditoría. Los análisis E2 son exploratorios, no estimaciones de ocupación. <span id="dataStatus">Verificando carga científica…</span></div></div><div class="editorial-copy"><p class="editorial-lead">Esta publicación presenta un registro científico de lectura continua: los párrafos explican la pregunta, las figuras presentan la evidencia y las tablas permiten inspeccionar los datos. La interacción no sustituye a la interpretación.</p><p>Se distinguen registros históricos JD, revisiones Railway, cobertura y scores de tres modelos. La lectura de un candidato de IA no equivale a presencia confirmada ni un descarte humano a ausencia biológica.</p></div>
@@ -176,6 +177,21 @@
 <p>La duración utilizable debe derivarse de metadatos verificados. Deben identificarse grabaciones duplicadas, interrupciones, campañas superpuestas y puntos con coordenadas compartidas. Los modelos de ocupación y detectabilidad requieren un diseño temporal y una evaluación estadística adicionales, que esta maqueta no representa.</p>
 <p class="math-close-note">Las ecuaciones definen indicadores exploratorios; la inferencia de ocupación requiere modelar detección y errores de clasificación.</p>
 </div></details><div class="final-note"><strong>Una sola publicación estática.</strong><p>Esta publicación contiene un único <code>index.html</code> y sus recursos. No consulta SQLite ni servicios de datos en ejecución. El maestro <code>analisis_pyrrhura_2026.py</code> integra análisis en la misma SQLite y genera automáticamente este sitio con las coordenadas originales. GitHub Pages publica los archivos estáticos subidos al repositorio.</p></div>
+</section>
+
+<section class="chapter" data-section="" id="ecologia">
+  <div class="eyebrow">07 · E3–E4 · ECOLOGÍA TERRITORIAL</div>
+  <div class="section-head"><div><h2>El paisaje más allá de las grabadoras</h2><p>Relieve, historia forestal, fragmentación y vacíos de representatividad con una cuadrícula de 30 m.</p></div><span class="section-num">FIGS. 07–09</span></div>
+  <div class="editorial-copy chapter-copy"><p>Estas figuras describen <strong>cobertura y estructura del paisaje</strong> con MapBiomas Ecuador Colección 4 (1985–2025), el DEM y estaciones de monitoreo. El denominador comparable incluye solo celdas con clasificación válida durante todos los años. Los rásteres completos y sus metadatos permanecen en el servidor.</p><p><strong>No</strong> estiman ocupación, abundancia, edad real del bosque, movimiento ni preferencia de hábitat de <em>Pyrrhura</em>. Las estaciones ilustran el diseño de muestreo, no una muestra aleatoria del paisaje.</p></div>
+  <div class="eco-status" id="ecoStatus" role="status">Esperando resultados verificados de la SQLite maestra.</div>
+  <div class="eco-summary" id="ecoSummary"></div>
+  <article class="figure-card" id="ecoAnnualFigure"><div class="fig-top"><div><h3>Cobertura forestal anual comparable</h3><p>1985–2025 · porcentaje de celdas válidas los 41 años, por paisaje de estudio.</p></div></div><div class="plot" id="ecoAnnualPlot"></div><div class="fig-caption"><strong>Figura 07.</strong> Las fluctuaciones reflejan clasificación anual observada, no necesariamente tala/regeneración causal ni un cambio ecológico confirmado en campo.</div></article>
+  <div class="figure-grid">
+    <article class="figure-card" id="ecoTransitionsFigure"><div class="fig-top"><div><h3>Transiciones forestales</h3><p>Pérdida, ganancia y bosque en ambas fechas, 1985 y 2025.</p></div></div><div class="plot compact-plot" id="ecoTransitionsPlot"></div><div class="fig-caption"><strong>Figura 08.</strong> Transiciones de clases forestales (3/4/5/6); no equivalen automáticamente a deforestación causal o restauración exitosa.</div></article>
+    <article class="figure-card" id="ecoElevationFigure"><div class="fig-top"><div><h3>Representatividad altitudinal</h3><p>Distribución aproximada de píxeles del paisaje frente a estaciones con y sin grabaciones.</p></div></div><div class="plot compact-plot" id="ecoElevationPlot"></div><div class="fig-caption"><strong>Figura 09.</strong> El paisaje se muestra por muestreo sistemático de píxeles; las estaciones se cuentan una vez por punto, sin ponderarlas por número de WAV.</div></article>
+  </div>
+  <div class="eco-table-wrap"><div class="table-short-head"><span>Tabla E4 · Cobertura y fragmentación</span><h3>Resumen territorial verificable</h3><p>Hectáreas y kilómetros cuadrados de la cuadrícula de estudio, no superficies catastrales de reservas.</p></div><div class="short-scroll"><table class="table-editorial"><thead><tr><th>Área</th><th>Bosque 1985</th><th>Bosque 2025</th><th>Pérdida</th><th>Ganancia</th><th>Bosque 41 años</th><th>Parches 2025</th><th>Mayor parche</th></tr></thead><tbody id="ecoTableBody"><tr><td colspan="8">Aún no hay derivados v0.2.0.</td></tr></tbody></table></div></div>
+  <div class="interpretation"><span class="interpret-icon">!</span><div><h4>Cómo interpretar estas superficies</h4><p>Los bordes, parches y distancias se calculan con conectividad de ocho vecinos, dentro del área ambiental de estudio; el borde de la geometría puede truncar parches. La continuidad indica bosque <em>clasificado en los 41 mapas</em>, no edad o condición primaria del bosque. Para inferencia biológica todavía se necesitan evaluación ciega, detectabilidad y modelos ecológicos adecuados.</p></div></div>
 </section>
 <footer class="footer"><img alt="Jocotoco" src="assets/brand/jocotoco_logo_green.svg"/><div><strong>Fundación Jocotoco · Observatorio Pyrrhura</strong><span>Diseño 0.1.5.7 + atlas científico 0.1.5.5</span></div><a href="#inicio">Volver al inicio ↑</a></footer>
 </div>

@@ -217,6 +217,11 @@ function installScytalopusLayerControl(map,base,reference){
    const l=L.imageOverlay(preview.url,preview.bounds,{opacity:.70,interactive:false});
    overlays['<span class="base-icon">🌿</span>'+escapeHtml(preview.name)]=l;
  }
+ const ecol=window.PYRRHURA_ECOLOGIA||{};
+ for(const preview of (ecol.previews||[])){
+   const l=L.imageOverlay(preview.url,preview.bounds,{opacity:.72,interactive:false});
+   overlays['<span class="base-icon">🌳</span>'+escapeHtml(preview.name)]=l;
+ }
 
  nativeControl=L.control.layers(baseLayers,overlays,{collapsed:true,position:'topright'}).addTo(map);
  // Separador visual inerte, sin checkbox. Uso exacto de control nativo.
