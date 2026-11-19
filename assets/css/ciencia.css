@@ -1,0 +1,19 @@
+/* 0.3.1 - narrativa única de reporte, sin modificar controles SIG Leaflet */
+.paper-block {scroll-margin-top:72px}
+#paperIntro,#paperMethods,#paperResults,#paperDiscussion,#paperConclusions,#paperBibliography{padding-top:clamp(24px,4vw,45px);}
+.paper-block > .chapter {border-top:1px solid #e8ede6;padding-top:35px;margin-top:38px;}
+#e6Results{border-top:2px solid #7e957a;margin-top:36px;padding-top:28px;}
+.ci-inference .section-head h2{font-size:clamp(24px,2.5vw,34px);line-height:1.15;max-width:25ch}
+.ci-inference h3{font-size:17px;margin:26px 0 14px;font-weight:700;color:#2c4839}
+.ci-inference .paper-table{min-width:730px}
+.ci-inference .paper-chartgrid{margin-bottom:25px}
+.ci-inference .paper-summary{margin:20px 0}
+.ci-inference .paper-summary article{border:1px solid #dfe7dc;background:#f9fbf8;border-radius:11px;padding:18px}
+.ci-inference .paper-summary article p{line-height:1.7}
+.ci-research{border-left:3px solid #8da18a;padding-left:16px;margin:20px 0}
+.ci-qa{border-top:1px solid #e0e8e0;border-bottom:1px solid #e0e8e0;padding:15px 0;margin:25px 0}
+.ci-qa p{color:#4c6653;font-size:12px;line-height:1.7}
+#paperBibliography{border-top:1px solid #aabb9f;}
+#paperResults > .paper-chartgrid {margin-top:26px}
+.paper-block section .section-head{max-width:100%}
+@media(max-width:800px){.ci-inference .paper-chartgrid{display:grid;grid-template-columns:minmax(0,1fr)}.ci-inference .paper-chart{min-width:0}.ci-inference .paper-chart .plot{height:300px}.paper-block > .chapter{padding-top:24px;margin-top:25px}}

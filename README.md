@@ -1,6 +1,8 @@
-# GitHub Pages · Pyrrhura 2026 v0.1.6
+# GitHub Pages · Pyrrhura 2026 v0.3.1
 
 https://jocoacoustics.github.io/analisis_pyrrhura_2026/
+
+**Versión 0.3.1:** el sitio sigue una estructura única de informe científico; no es un atlas con paper anexo. Consulte README_v0.3.1.md en el directorio raíz para metodología e interpretación de modelos E6.
 
 Sitio estático con **la UX editorial v0.1.5.7** y el contrato SIG Scytalopus. Usa `datos/observatorio.js`, que se llena con datos reales mediante `scripts/v0158/24_EXPORTAR_GITHUBPAGES_V0158.py` en el servidor Linux.
 

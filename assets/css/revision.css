@@ -1,0 +1,47 @@
+/* v0.3.2 · tipografía de manuscrito, diagramas y ecuaciones accesibles */
+.content{width:100%;max-width:none;padding:clamp(22px,2.4vw,40px) clamp(18px,3.2vw,56px) 38px;margin:0 auto}
+.paper-block,.chapter,.editorial-copy,.chapter-copy,.paper-paragraph,.paper-sub,.ci-research,.interpretation,.paper-abstract,
+#ciDiscussionText,#ciConclusionsText,#rvInterpretation,#rvDiscussion{max-width:none!important}
+.paper-paragraph,.editorial-copy p,.paper-abstract p,#ciDiscussionText p,#ciConclusionsText p,#rvInterpretation p,#rvDiscussion p{
+ text-align:justify;text-justify:inter-word;line-height:1.88;font-size:clamp(14px,1.07vw,16px);
+ letter-spacing:0;hyphens:auto;overflow-wrap:break-word;max-width:none;width:100%}
+.paper-abstract{border-top:1px solid #bdc9b9;border-bottom:1px solid #bdc9b9;padding:17px 0 18px;margin:8px 0 32px}
+.paper-abstract p{font-size:clamp(15px,1.15vw,17px);line-height:1.87}
+.paper-block h2,.chapter h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(23px,2.3vw,32px);line-height:1.21;max-width:none!important}
+.paper-block h3,.ci-inference h3{font-weight:680;line-height:1.35;color:#264332;max-width:none}
+.paper-chartgrid,.scientific-facets{grid-template-columns:repeat(2,minmax(0,1fr));gap:21px}
+.paper-chart{background:#fff;border:1px solid #dce6dc;padding:20px 21px 12px;border-radius:8px;min-width:0;overflow:hidden}
+.paper-chart h3{font-size:clamp(14px,1.18vw,17px);margin:0 0 14px}
+.paper-chart .plot{height:390px;min-height:345px;width:100%;max-width:100%}
+.paper-chart.paper-wide .plot{height:425px}
+.plot .modebar{top:0!important;right:1px!important;background:rgba(255,255,255,.85)!important;opacity:.13;transition:opacity .18s}
+.plot:hover .modebar,.plot:focus-within .modebar{opacity:.95}
+.paper-chart figcaption,.fig-caption{font-size:13px!important;line-height:1.75!important;color:#526357!important;margin-top:13px!important;padding:12px 0 3px!important}
+.paper-chart figcaption strong,.fig-caption strong{font-weight:800;color:#274536}
+.paper-chart .plot p{font-size:14px;line-height:1.7;padding:25px}
+.paper-table-scroll{margin:16px 0 25px;border-radius:4px;overflow-x:auto;overflow-y:visible;background:#fff}
+.paper-table{border-collapse:collapse;font-size:clamp(12px,.97vw,14px);min-width:780px}
+.paper-table th,.paper-table td{padding:13px 12px;line-height:1.54;vertical-align:top}
+.paper-table caption{caption-side:top;text-align:left;font-size:14px;color:#334e3f;font-weight:650;padding:12px 10px;border-bottom:2px solid #748773;background:#f8faf7}
+.paper-table-label{font-size:12px;font-weight:750;color:#777a4d;text-transform:uppercase;letter-spacing:.1em;padding:9px 12px}
+.ci-inference .paper-table{min-width:840px}
+.math-article{background:#fff;border-top:2px solid #546d59;border-bottom:1px solid #d7e0d2;padding:25px 16px 18px;margin:27px 0 35px}
+.math-article h3{font:600 clamp(19px,1.5vw,23px) Georgia,serif;margin:0 0 15px}
+.math-article p{font-size:clamp(14px,1vw,16px);text-align:justify;line-height:1.8;margin:11px 0;max-width:none}
+.math-equation{padding:20px 10px;overflow-x:auto;overflow-y:hidden;text-align:center;background:#fbfcf9;border-radius:6px;font-size:clamp(15px,1.4vw,18px);margin:13px 0}
+#ciSummary,#paperSummary,.technical-supplement[hidden]{display:none!important}
+#rvStatus{font-size:12px;color:#526851;margin:0 0 24px}
+#rvInterpretation p{margin:14px 0}
+.ci-research{border:0!important;padding:0!important}
+.ci-qa{margin:0}
+.paper-references{max-width:none!important;gap:16px}
+.paper-references li{font-size:14px;line-height:1.78;text-align:justify}
+.paper-references small{font-size:12px}
+#paperResults>h2{border-bottom:1px solid #cbd7cc;padding-bottom:12px}
+.chapter{padding-top:38px;margin-top:22px}
+.figure-card .fig-top h3{font-size:clamp(15px,1.2vw,19px)}
+.figure-card,.figure-grid .figure-card{height:auto!important;max-height:none!important}
+.figure-card .plot{min-height:340px}
+.table-editorial-wrap h3,.eco-table-wrap h3{font-family:Georgia,serif}
+@media(max-width:940px){.content{padding:23px 20px}.paper-chartgrid,.scientific-facets{grid-template-columns:minmax(0,1fr)}.paper-chart .plot{height:345px}.paper-chart.paper-wide .plot{height:365px}.paper-chart{padding:13px}.math-equation{font-size:15px}}
+@media(max-width:540px){.content{padding:16px 12px}.paper-paragraph,.editorial-copy p,.paper-abstract p{text-align:left;hyphens:none;font-size:14px}.paper-chart .plot{height:325px;min-height:300px}.paper-table-scroll{margin:14px -5px;max-width:calc(100% + 10px)}.math-article{padding:15px 9px}.math-equation{font-size:14px}.paper-chart figcaption,.fig-caption{font-size:12px!important}}

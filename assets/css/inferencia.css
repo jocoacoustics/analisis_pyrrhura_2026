@@ -1,0 +1,29 @@
+/* Informe integrado v0.3.0: layout editorial conservando UX previa */
+.paper-block{margin:0;max-width:100%;min-width:0}
+.paper-block .paper-sub{font-size:13px;max-width:78ch;color:#556d5b;line-height:1.7}
+.paper-paragraph{font-size:14px;line-height:1.8;color:#394b3f;max-width:86ch;margin:12px 0}
+.paper-paragraph p{margin:12px 0;line-height:1.8}
+.paper-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:22px 0}
+.paper-summary article{border:1px solid #dfe6df;background:#fbfcf9;border-radius:10px;padding:18px;min-width:0}
+.paper-summary h3{font-family:Georgia,serif;color:#294a35;margin:0 0 9px}
+.paper-summary p{font-size:12px;line-height:1.6;color:#465b4b;margin:6px 0}
+.paper-chartgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}
+.paper-chart{background:#fff;border:1px solid #e4e9e2;border-radius:10px;min-width:0;overflow:hidden;padding:15px}
+.paper-chart.paper-wide{grid-column:1/-1}
+.paper-chart h3{font-size:15px;color:#2e4836;font-weight:650;margin:3px 0 8px}
+.paper-chart .plot{height:310px;max-width:100%;width:100%;min-width:0}
+.paper-chart figcaption{font-size:11px;line-height:1.6;color:#647669;border-top:1px solid #eef1ea;padding-top:12px}
+.paper-table-scroll{overflow:auto;max-width:100%;margin:18px 0;border:1px solid #e0e7df;border-radius:10px;background:#fff}
+.paper-table{border-collapse:collapse;min-width:820px;width:100%;font-size:11px;color:#395044}
+.paper-table th{background:#edf3ec;font-weight:650;text-align:left;position:sticky;top:0}
+.paper-table td,.paper-table th{padding:11px 10px;border-bottom:1px solid #eaf0e8;vertical-align:top}
+.paper-ref{color:#285c43;text-decoration:none;border-bottom:1px solid #8ab69d}
+.paper-ref:hover{text-decoration:underline}
+.paper-references{list-style:none;padding:0;margin:17px 0;display:grid;gap:12px;max-width:95ch;counter-reset:refs}
+.paper-references li{font-size:12px;line-height:1.65;border-bottom:1px solid #e7ebe5;padding-bottom:10px}
+.paper-references small{display:block;color:#677b6c;font-size:11px}
+.paper-references a{color:#356e4e;overflow-wrap:anywhere}
+.paper-downloads{padding:15px 18px;background:#f0f5ee;border-radius:9px;font-size:12px;line-height:2.1;color:#355744}
+.paper-downloads a{color:#285e42;text-decoration:underline}
+.paper-method-note{padding:14px 18px;border-left:3px solid #66856d;background:#f9fbf7;line-height:1.7;font-size:12px;color:#476151;margin:18px 0}
+@media(max-width:800px){.paper-chartgrid,.paper-summary{grid-template-columns:1fr}.paper-chart.paper-wide{grid-column:auto}.paper-chart .plot{height:280px}.paper-chart{padding:11px}.paper-paragraph{font-size:13px}}

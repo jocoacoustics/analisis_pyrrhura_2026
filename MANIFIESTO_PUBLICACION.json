@@ -1,15 +1,15 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.2",
   "source_signature": "c08b2b39669a5c7fae0d13437b133b5b8fa4fa36506e4efc3fa498ad4d01b264",
   "source_strategy": "ATLAS_V0152_RECONCILIADO",
-  "created_utc": "2026-11-18T18:20:53+00:00",
+  "created_utc": "2026-11-19T03:16:06+00:00",
   "n_points": 287,
   "n_daily": 9544,
   "n_candidates": 3929,
   "n_model_evaluations": 4,
   "coordinates": "ORIGINALES EXACTAS",
   "coordinate_displacement_m": 0,
-  "observatorio_sha256": "2803de2e896cfe2e2dd21a8cd7af8d168c69e11a99cdab0ff10acc255334684b",
+  "observatorio_sha256": "09fab8f8cfb86e13169c7347f19bb54c33c76592d3cfae1b9edd27dc2ce0ee52",
   "web_ready": true,
-  "scientific_scope": "E2 exploratorio y E3/E4 descriptivos; no se infiere ocupación ni preferencia de hábitat"
+  "scientific_scope": "E2–E6; modelos de screening condicional y escenarios de uso con FPR fijada; no se infiere abundancia ni ocupación verdadera no identificada."
 }

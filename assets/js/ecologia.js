@@ -20,8 +20,14 @@ function init(){
  plot('ecoAnnualPlot',ids.map((id,i)=>({type:'scatter',mode:'lines+markers',name:areaName(id),x:annual.filter(r=>r.area_id===id).map(r=>r.year),y:annual.filter(r=>r.area_id===id).map(r=>r.pct_forest_common==null?null:r.pct_forest_common*100),line:{color:colors[i%colors.length],width:2},marker:{size:4}})),
   {xaxis:{title:'Año',dtick:5},yaxis:{title:'Bosque (% de píxeles válidos en 41 años)',rangemode:'tozero'},legend:{orientation:'h',y:-.25}});
  plot('ecoTransitionsPlot',[{type:'bar',name:'Pérdida de clase bosque',x:ids.map(areaName),y:areas.map(a=>a.forest_loss_km2),marker:{color:'#b75546'}},{type:'bar',name:'Ganancia de clase bosque',x:ids.map(areaName),y:areas.map(a=>a.forest_gain_km2),marker:{color:'#3f805a'}},{type:'bar',name:'Bosque ambas fechas',x:ids.map(areaName),y:areas.map(a=>a.unchanged_forest_km2),marker:{color:'#7aa38c'}}],{barmode:'group',yaxis:{title:'Superficie clasificada (km²)'},xaxis:{title:'Paisaje'},legend:{orientation:'h',y:-.33,font:{size:9}},margin:{l:55,r:12,t:20,b:85}});
- const focus=ids[0], subset=coverage.filter(r=>r.area_id===focus),bins=subset.map(r=>r.elevation_band),total=subset.reduce((a,r)=>a+r.sampled_landscape_pixels,0),pts=subset.reduce((a,r)=>a+r.stations_total,0);
- const elevate=[{type:'bar',name:'Píxeles de paisaje (%)',x:bins,y:subset.map(r=>total?100*r.sampled_landscape_pixels/total:0),marker:{color:'#b8a273'}},{type:'bar',name:'Estaciones (%)',x:bins,y:subset.map(r=>pts?100*r.stations_total/pts:0),marker:{color:'#3f805a'}}];
+ const elevate=ids.flatMap((id,i)=>{
+   const subset=coverage.filter(r=>r.area_id===id),bins=subset.map(r=>r.elevation_band);
+   const total=subset.reduce((a,r)=>a+r.sampled_landscape_pixels,0),pts=subset.reduce((a,r)=>a+r.stations_with_wav,0);
+   return [
+    {type:'bar',name:areaName(id)+' · paisaje',x:bins,y:subset.map(r=>total?100*r.sampled_landscape_pixels/total:0),marker:{color:i?'#c8aa7b':'#aec8ae'}},
+    {type:'bar',name:areaName(id)+' · estaciones con WAV',x:bins,y:subset.map(r=>pts?100*r.stations_with_wav/pts:0),marker:{color:i?'#b47b45':'#346b4d'}}
+   ];
+ });
  plot('ecoElevationPlot',elevate,{barmode:'group',xaxis:{title:'Altitud del terreno (m)',tickangle:-35},yaxis:{title:'Proporción del grupo (%)'},legend:{orientation:'h',y:-.35,font:{size:9}},margin:{l:50,r:15,t:20,b:92}});
  $('ecoTableBody').innerHTML=areas.map(a=>`<tr><th>${esc(areaName(a.area_id))}</th><td>${esNumber(a.forest_1985_km2,'km²')}</td><td>${esNumber(a.forest_2025_km2,'km²')}</td><td>${esNumber(a.forest_loss_km2,'km²')}</td><td>${esNumber(a.forest_gain_km2,'km²')}</td><td>${esNumber(a.continuous_forest_km2,'km²')}</td><td>${esNumber(a.forest_patches_2025)}</td><td>${esNumber(a.largest_patch_ha,'ha')}</td></tr>`).join('');
 }

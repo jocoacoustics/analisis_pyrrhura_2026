@@ -1,0 +1,3 @@
+# Pyrrhura 2026 v0.3.0 — trazabilidad
+
+Derivado de tablas py016, py017, py020, e2 y 24 particiones Parquet originales. Para ver los modelos consulte tablas/modelos_inferencia.csv. Los scores del clasificador no están calibrados como probabilidades ecológicas. Los umbrales son condicionales a material revisado selectivamente; no equivalen a validación ciega. Los modelos GLM sobre días con screening son exploratorios y no estiman ocupación. No se etiquetan ausencias biológicas. La no identificabilidad del modelo de ocupación con falsas detecciones queda registrada explícitamente en py030_models. Bibliografía en references.bib.
